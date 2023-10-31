@@ -3,7 +3,7 @@
 import datetime as dt
 import hashlib as hash
 from db.control import DBControl
-from constants.querys import INSERT_REG, SELECT_LOGIN
+from constants.querys import INSERT_USER, SELECT_LOGIN
 
 db_control = DBControl()
 
@@ -19,7 +19,7 @@ class User():
         date = dt.datetime.now()
         encryp = self._encrypt()
         
-        query = INSERT_REG
+        query = INSERT_USER
         user = (self.username, self.surname, self.email, encryp.hexdigest(), date)
         
         return [db_control.insert(query, user), self]
