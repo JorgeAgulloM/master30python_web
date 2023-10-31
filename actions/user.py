@@ -1,6 +1,7 @@
 ### User actions ###
 from constants import strings
-import models.user.user as model
+import models.user.user as user_model
+import actions.note as notes
 
 class Actions:
     
@@ -11,7 +12,7 @@ class Actions:
         email = input(strings.QUESTION_EMAIL)
         password = input(strings.QUESTION_PASS)
         
-        new_user = model.User(username, surname, email, password)
+        new_user = user_model.User(username, surname, email, password)
         register = new_user.register()
         
         if register[0] > 0:
@@ -24,20 +25,20 @@ class Actions:
         email = input(strings.QUESTION_EMAIL)
         password = input(strings.QUESTION_PASS)
         
-        user = model.User('', '', email, password)
-        login = user.login()
+        user = user_model.User('', '', email, password)
+        user = user.login()
         
-        if len(login) == 0:
+        if len(user) == 0:
             print(strings.ANSWER_LOGIN_FAIL)
         else:
-            username = login[1]
+            username = user[1]
             print(strings.ANSWER_LOGIN_SUCCESS % (username))
-            self._next_actions(username)
+            self._next_actions(user)
             
-    def _next_actions(self, username):
+    def _next_actions(self, user):
         print(strings.QUESTION_ACCTIONS_TODO)
         
-        action = input(strings.QUESTION_WANT_TODO % (username))
+        action = input(strings.QUESTION_WANT_TODO % (user[1]))
         
         action_list = [
             strings.CREATE,
@@ -48,22 +49,24 @@ class Actions:
         
         if action == action_list[0]:
             print(strings.GO_TO % (action_list[0]))
-            self._next_actions(username)
+            note = notes.Actions()
+            note.create(user)
+            self._next_actions(user)
             
         if action == action_list[1]:
             print(strings.GO_TO % (action_list[1]))
-            self._next_actions(username)
+            self._next_actions(user)
             
         if action == action_list[2]:
             print(strings.GO_TO % (action_list[2]))
-            self._next_actions(username)
+            self._next_actions(user)
             
         if action == action_list[3]:
-            print(strings.EXIT_TEXT % (username))
+            print(strings.EXIT_TEXT % (user[1]))
             exit()
             
         if action not in action_list:
             print('Elige una acción correcta')
-            self._next_actions(username)
+            self._next_actions(user)
             
         
