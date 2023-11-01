@@ -26,7 +26,17 @@ class DBControl():
     def select(self, query, data):
         try:
             cursor.execute(query, data)
-        except:
+        except Exception as e:
+            print(f'DB select error: {e}')
+            return []
+        
+        return cursor.fetchall()
+            
+    def select_one(self, query, data):
+        try:
+            cursor.execute(query, data)
+        except Exception as e:
+            print(f'DB select_one error: {e}')
             return []
         
         return cursor.fetchone()

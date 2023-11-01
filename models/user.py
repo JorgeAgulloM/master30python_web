@@ -2,7 +2,7 @@
 
 import datetime as dt
 import hashlib as hash
-from db.control import DBControl
+from db.db_control import DBControl
 from constants.querys import INSERT_USER, SELECT_LOGIN
 
 db_control = DBControl()
@@ -30,7 +30,7 @@ class User():
         
         user = (self.email, encryp.hexdigest())
 
-        return db_control.select(query, user)
+        return db_control.select_one(query, user)
     
     def _encrypt(self):
         encryp = hash.sha256()

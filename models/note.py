@@ -1,6 +1,6 @@
 ### Note model ###
-from db.control import DBControl
-from constants.querys import INSERT_NOTE
+from db.db_control import DBControl
+from constants.querys import INSERT_NOTE, SELECT_NOTES
 
 db_control = DBControl()
 
@@ -17,4 +17,8 @@ class Note():
                 
         return [db_control.insert(query, note), self]
     
+    def get_notes(self):
+        query = SELECT_NOTES % (self.user_id)
+        
+        return db_control.select(query, None)
     

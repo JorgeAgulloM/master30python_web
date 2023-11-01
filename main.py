@@ -8,7 +8,7 @@ Proyecto Python y MySql:
 """
 
 from constants import strings
-from actions.user import Actions as actions
+from models.actions.action_users import UserActions as actions
 
 make = actions()
 

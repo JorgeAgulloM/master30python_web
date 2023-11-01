@@ -39,3 +39,5 @@ QUESTION_NOTE_DESCRIPTION: str = '\nIntroduce la descripción de la nota: '
 
 ANSWER_NOTE_CREATE_SUCCESS: str = '\nTu nota %s has sido guardada con éxito'
 ANSWER_NOTE_CREATED_FAIL: str = '\nError al guardar la nota.'
+
+ANSWER_NOTE_GETTING: str = '\nPerfecto %s, aquí tienes tus notas:'

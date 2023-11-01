@@ -1,9 +1,10 @@
 ### User actions ###
 from constants import strings
-import models.user.user as user_model
-import actions.note as notes
+from .action_notes import NoteActions
+from models.user import User
 
-class Actions:
+
+class UserActions:
     
     def register(self):
         print(strings.ANSWER_REG)
@@ -12,7 +13,7 @@ class Actions:
         email = input(strings.QUESTION_EMAIL)
         password = input(strings.QUESTION_PASS)
         
-        new_user = user_model.User(username, surname, email, password)
+        new_user = User(username, surname, email, password)
         register = new_user.register()
         
         if register[0] > 0:
@@ -25,7 +26,7 @@ class Actions:
         email = input(strings.QUESTION_EMAIL)
         password = input(strings.QUESTION_PASS)
         
-        user = user_model.User('', '', email, password)
+        user = User('', '', email, password)
         user = user.login()
         
         if len(user) == 0:
@@ -47,14 +48,16 @@ class Actions:
             strings.EXIT,
         ]
         
+        notes = NoteActions()
+        
         if action == action_list[0]:
             print(strings.GO_TO % (action_list[0]))
-            note = notes.Actions()
-            note.create(user)
+            notes.create(user)
             self._next_actions(user)
             
         if action == action_list[1]:
             print(strings.GO_TO % (action_list[1]))
+            notes.get(user)
             self._next_actions(user)
             
         if action == action_list[2]:
