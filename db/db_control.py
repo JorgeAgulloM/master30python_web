@@ -40,4 +40,14 @@ class DBControl():
             return []
         
         return cursor.fetchone()
+    
+    def delete_one(self, query, data):
+        try:
+            cursor.execute(query, data)
+            database.commit()
+            
+        except Exception as e:
+            print(f'DB delete_one error: {e}')    
         
+        return cursor.rowcount
+    

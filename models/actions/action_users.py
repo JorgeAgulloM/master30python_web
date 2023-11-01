@@ -57,11 +57,12 @@ class UserActions:
             
         if action == action_list[1]:
             print(strings.GO_TO % (action_list[1]))
-            notes.get(user)
+            notes.get_all(user)
             self._next_actions(user)
             
         if action == action_list[2]:
             print(strings.GO_TO % (action_list[2]))
+            notes.delete_note(user)
             self._next_actions(user)
             
         if action == action_list[3]:

@@ -33,11 +33,14 @@ QUESTION_ACCTIONS_TODO: str = f"""\n
     - Salir ({EXIT})
 """
 
-QUESTION_NOTE_CREATE: str = '\nPerfecto. %s, vamos a crear una nota...'
 QUESTION_NOTE_TITLE: str = '\nIntroduce el título de la nota: '
 QUESTION_NOTE_DESCRIPTION: str = '\nIntroduce la descripción de la nota: '
+QUESTION_NOTE_DELETE: str = '\nIntruduce el título de la nota que quiere borrar: '
 
+ANSWER_NOTE_CREATE: str = '\nPerfecto. %s, vamos a crear una nota...'
 ANSWER_NOTE_CREATE_SUCCESS: str = '\nTu nota %s has sido guardada con éxito'
 ANSWER_NOTE_CREATED_FAIL: str = '\nError al guardar la nota.'
-
-ANSWER_NOTE_GETTING: str = '\nPerfecto %s, aquí tienes tus notas:'
+ANSWER_NOTE_GETTING: str = '\nPerfecto %s, aquí tienes tus notas...'
+ANSWER_NOTE_DELETE: str = '\nPerfecto. %s, vamos a borrar notas...'
+ANSWER_NOTE_DELETE_SUCCESS: str = '\nLa nota %s ha sido borrada correctamente.'
+ANSWER_NOTE_DELETE_FAIL: str = '\nLa nota %s no ha podido ser borrada. Intentalo de nuevo.'

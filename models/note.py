@@ -1,6 +1,6 @@
 ### Note model ###
 from db.db_control import DBControl
-from constants.querys import INSERT_NOTE, SELECT_NOTES
+from constants.querys import INSERT_NOTE, SELECT_NOTES, DELETE_NOTE
 
 db_control = DBControl()
 
@@ -21,4 +21,9 @@ class Note():
         query = SELECT_NOTES % (self.user_id)
         
         return db_control.select(query, None)
+    
+    def delete(self):
+        query = DELETE_NOTE % (self.user_id ,f"%{self.title}%")
+        print(query)
+        return [db_control.delete_one(query, None), self]
     
