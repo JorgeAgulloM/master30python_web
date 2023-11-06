@@ -1,14 +1,7 @@
 ### Calulator ###
-from tkinter import Tk, Label, StringVar
-from objects import frame, field, button_operator, msg_error, msg_box, separator
+from objects import  mainloop, field, button_operator, msg_error, msg_box, separator, result_list
 from operations import operation as op
-
-window = Tk()
-window.title('Calculadora con Tkinter y Python')
-
-value_one = StringVar()
-value_two = StringVar()
-my_frame = frame(window)
+from data import value_one, value_two, results
 
 def calculate(operation: int):
     result = op(operation, value_one.get(), value_two.get())
@@ -18,16 +11,21 @@ def calculate(operation: int):
     else:
         value_one.set('')
         value_two.set('')
-        msg_box(result)
+        results.append(f'Resutado: {result}')
 
-value_one = field(my_frame, text='Primer valor')
-value_two = field(my_frame, text='Segundo valor')
+        result_list(results)
+        msg_box(results)
 
-separator(my_frame)
+value_one = field(text='Primer valor')
+value_two = field(text='Segundo valor')
 
-button_operator(my_frame, signal='+', operation=lambda:calculate(0))
-button_operator(my_frame, signal='-', operation=lambda:calculate(1))
-button_operator(my_frame, signal='x', operation=lambda:calculate(2))
-button_operator(my_frame, signal='/', operation=lambda:calculate(3))
+separator()
 
-window.mainloop()
+button_operator(signal='+', operation=lambda:calculate(0))
+button_operator(signal='-', operation=lambda:calculate(1))
+button_operator(signal='x', operation=lambda:calculate(2))
+button_operator(signal='/', operation=lambda:calculate(3))
+
+result_list(results)
+
+mainloop()
