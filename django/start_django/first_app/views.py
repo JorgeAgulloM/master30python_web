@@ -21,6 +21,9 @@ layout = """
         <li>
             <a href='/yearlist'>Year List</a>
         </li>
+        <li>
+            <a href='/contact/name/surname'>Contact Page</a>
+        </li>
     </ul>
     <hr/>
 """
@@ -56,3 +59,11 @@ def year_list(request):
     html += '</ul>'
     
     return HttpResponse(layout+html)
+
+    
+def contact(request, name, surname):
+    return HttpResponse(layout + f"""
+        <h1>Contact page</h1>                   
+        <h1>Hello {name} {surname}, how are you?</h1>                   
+        <h3>Created by Jorge Agulló</h3>                   
+    """)
