@@ -5,6 +5,12 @@ from django.shortcuts import render, HttpResponse
 # MVT = Model View Template (For Django)
 # In Django the View is the Template and the Controller is the View
 
+def index(request):
+    return HttpResponse("""
+        <h1>Inicio<h1>                    
+    """)
+
+
 def hello_world(request):
     return HttpResponse("""
         <h1>Hello World Form Django<h3>
