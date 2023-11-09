@@ -23,9 +23,10 @@ from first_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('index', views.index, name='index'),
+    path('index/', views.index, name='index'),
     path('helloworld/', views.hello_world, name='helow_world'),
     path('pagetest/', views.page_test, name='page_test'),
+    path('pagetest/<int:redirection>', views.page_test, name='page_test'),
     path('yearlist/', views.year_list, name='year_list'),
     path('contact/', views.contact, name='contact'),
     path('contact/<str:name>', views.contact, name='contact'),

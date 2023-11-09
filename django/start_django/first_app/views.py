@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 # MVC = Model View Controller
@@ -39,7 +39,13 @@ def hello_world(request):
         <h3> I am Jorge Agulló</h3>                    
     """)
     
-def page_test(request):
+def page_test(request, redirection:int=0):
+    
+    if redirection == 1:
+        return redirect('index')
+    elif redirection == 2:
+        return redirect('contact', name='Jorge', surname='Agulló')
+    
     return HttpResponse(layout+"""
         <h1>My web page</h1>                   
         <h3>Created by Jorge Agulló</h3>                   
@@ -61,7 +67,7 @@ def year_list(request):
     return HttpResponse(layout+html)
 
     
-def contact(request, name='', surname=''):
+def contact(request, name:str='', surname:str=''):
     html = '<h3>Introduce nombre/apellido en la url</h3>'
     
     if name and surname:
