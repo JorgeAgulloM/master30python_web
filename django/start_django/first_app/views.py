@@ -5,26 +5,46 @@ from django.shortcuts import render, HttpResponse
 # MVT = Model View Template (For Django)
 # In Django the View is the Template and the Controller is the View
 
+layout = """
+    <h1>Web site with Django | by Jorge Agulló</h1>
+    <hr/>
+    <ul>
+        <li>
+            <a href='/index'>Index</a>
+        </li>
+        <li>
+            <a href='/helloworld'>Hello World</a>
+        </li>
+        <li>
+            <a href='/pagetest'>Page Test</a>
+        </li>
+        <li>
+            <a href='/yearlist'>Year List</a>
+        </li>
+    </ul>
+    <hr/>
+"""
+
 def index(request):
-    return HttpResponse("""
-        <h1>Inicio<h1>                    
+    return HttpResponse(layout+"""
+        <h1>Index</h1>                    
     """)
 
 def hello_world(request):
-    return HttpResponse("""
-        <h1>Hello World Form Django<h1>
-        <h3> I am Jorge Agulló<h3>                    
+    return HttpResponse(layout+"""
+        <h1>Hello World Form Django</h1>
+        <h3> I am Jorge Agulló</h3>                    
     """)
     
 def page_test(request):
-    return HttpResponse("""
-        <h1>Pagina de mi web<h1>                   
-        <h3>Created by Jorge Agulló<h3>                   
+    return HttpResponse(layout+"""
+        <h1>My web page</h1>                   
+        <h3>Created by Jorge Agulló</h3>                   
     """)
     
 def year_list(request):
     html = """
-        <p>Listado de años pares hasta el 2050:</p>
+        <p>Pair years list to 2050:</p>
         <ul>
     """
     year = 2021
@@ -35,4 +55,4 @@ def year_list(request):
          
     html += '</ul>'
     
-    return HttpResponse(html)
+    return HttpResponse(layout+html)
