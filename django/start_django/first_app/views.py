@@ -10,7 +10,6 @@ def index(request):
         <h1>Inicio<h1>                    
     """)
 
-
 def hello_world(request):
     return HttpResponse("""
         <h1>Hello World Form Django<h1>
@@ -22,3 +21,18 @@ def page_test(request):
         <h1>Pagina de mi web<h1>                   
         <h3>Created by Jorge Agulló<h3>                   
     """)
+    
+def year_list(request):
+    html = """
+        <p>Listado de años pares hasta el 2050:</p>
+        <ul>
+    """
+    year = 2021
+    while year <= 2050:
+        if year % 2 == 0:
+            html += f'<li>{str(year)}</li>'
+        year += 1
+         
+    html += '</ul>'
+    
+    return HttpResponse(html)
