@@ -13,6 +13,12 @@ def index(request):
 
 def hello_world(request):
     return HttpResponse("""
-        <h1>Hello World Form Django<h3>
+        <h1>Hello World Form Django<h1>
         <h3> I am Jorge Agulló<h3>                    
+    """)
+    
+def page_test(request):
+    return HttpResponse("""
+        <h1>Pagina de mi web<h1>                   
+        <h3>Created by Jorge Agulló<h3>                   
     """)
