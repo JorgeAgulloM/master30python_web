@@ -27,5 +27,7 @@ urlpatterns = [
     path('helloworld/', views.hello_world, name='helow_world'),
     path('pagetest/', views.page_test, name='page_test'),
     path('yearlist/', views.year_list, name='year_list'),
+    path('contact/', views.contact, name='contact'),
+    path('contact/<str:name>', views.contact, name='contact'),
     path('contact/<str:name>/<str:surname>', views.contact, name='contact'),
 ]

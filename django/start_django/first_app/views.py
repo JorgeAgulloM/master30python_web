@@ -22,7 +22,7 @@ layout = """
             <a href='/yearlist'>Year List</a>
         </li>
         <li>
-            <a href='/contact/name/surname'>Contact Page</a>
+            <a href='/contact'>Contact Page</a>
         </li>
     </ul>
     <hr/>
@@ -61,9 +61,16 @@ def year_list(request):
     return HttpResponse(layout+html)
 
     
-def contact(request, name, surname):
+def contact(request, name='', surname=''):
+    html = '<h3>Introduce nombre/apellido en la url</h3>'
+    
+    if name and surname:
+        html = f'<h3>Hello {name} {surname}, how are you?</h3>'
+    elif name:
+        html = f'<h3>Hello {name}, how are you?</h3>'
+        
     return HttpResponse(layout + f"""
         <h1>Contact page</h1>                   
-        <h1>Hello {name} {surname}, how are you?</h1>                   
-        <h3>Created by Jorge Agulló</h3>                   
+        {html}                   
+        <h5>Created by Jorge Agulló</h5>
     """)
