@@ -15,3 +15,6 @@ Generar BBDD Sqlite3
 
 Run Server
 - python manage.py runserver
+
+Generate app
+- python manage.py startapp <name_of_app>
