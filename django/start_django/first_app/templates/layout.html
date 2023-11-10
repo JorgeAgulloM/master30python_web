@@ -16,28 +16,37 @@
 </head>
 
 <body>
-    <h1>Web site with Django | by Jorge Agulló</h1>
-    <hr/>
-    <ul>
-        <li>
-            <a href='/index'>Index</a>
-        </li>
-        <li>
-            <a href='/helloworld'>Hello World</a>
-        </li>
-        <li>
-            <a href='/pagetest'>Page Test</a>
-        </li>
-        <li>
-            <a href='/yearlist'>Year List</a>
-        </li>
-        <li>
-            <a href='/contact'>Contact Page</a>
-        </li>
-    </ul>
-    <hr/>
+    <!-- Web Heder -->
+    <header>
+        <div id="logo">
+            <!-- Logo -->
+
+            <h1>Web site with Django | by Jorge Agulló</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href='/index'>Index</a>
+            </li>
+            <li>
+                <a href='/helloworld'>Hello World</a>
+            </li>
+            <li>
+                <a href='/pagetest'>Page Test</a>
+            </li>
+            <li>
+                <a href='/yearlist'>Year List</a>
+            </li>
+            <li>
+                <a href='/contact'>Contact Page</a>
+            </li>
+        </ul>
+    </nav>
 
     <div id="content">
+        <h2 class="title">Test Title</h2>
         {% block content %}
             <!-- Content Block -->
             <strong> Default content!!! </strong>
@@ -45,7 +54,7 @@
     </div>
 
 </body>
-<hr/>
+
 <footer>
     Master en python &copy; Jorge Agulló
 </footer>

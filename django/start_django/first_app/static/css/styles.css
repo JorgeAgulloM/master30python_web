@@ -1,4 +1,28 @@
+/* General Style */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif, Arial, Helvetica;
+    text-decoration: none;
+}
+
 body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: red;
+    background-color: #F2F2F2;
+}
+
+/* Headre Style */
+header{
+    width: 1212px;
+    height: 140px;
+    background-color: #23282D;
+    margin: 0px auto;
+}
+
+#logo h1{
+    display: block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #42A096;
 }
