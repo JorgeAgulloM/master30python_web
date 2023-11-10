@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+            <!-- Title block -->
+        {% endblock %}
+        | Jorge Agulló web
+    </title>
+
+</head>
+
+<body>
+    <h1>Web site with Django | by Jorge Agulló</h1>
+    <hr/>
+    <ul>
+        <li>
+            <a href='/index'>Index</a>
+        </li>
+        <li>
+            <a href='/helloworld'>Hello World</a>
+        </li>
+        <li>
+            <a href='/pagetest'>Page Test</a>
+        </li>
+        <li>
+            <a href='/yearlist'>Year List</a>
+        </li>
+        <li>
+            <a href='/contact'>Contact Page</a>
+        </li>
+    </ul>
+    <hr/>
+
+    <div id="content">
+        {% block content %}
+            <!-- Content Block -->
+            <strong> Default content!!! </strong>
+        {% endblock %}
+    </div>
+
+</body>
+<hr/>
+<footer>
+    Master en python &copy; Jorge Agulló
+</footer>
+
+</html>

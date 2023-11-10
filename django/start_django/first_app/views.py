@@ -29,15 +29,10 @@ layout = """
 """
 
 def index(request):
-    return HttpResponse(layout+"""
-        <h1>Index</h1>                    
-    """)
+    return render(request, 'index.html')
 
 def hello_world(request):
-    return HttpResponse(layout+"""
-        <h1>Hello World Form Django</h1>
-        <h3> I am Jorge Agulló</h3>                    
-    """)
+    return render(request, 'hello_world.html')
     
 def page_test(request, redirection:int=0):
     
@@ -46,10 +41,7 @@ def page_test(request, redirection:int=0):
     elif redirection == 2:
         return redirect('contact', name='Jorge', surname='Agulló')
     
-    return HttpResponse(layout+"""
-        <h1>My web page</h1>                   
-        <h3>Created by Jorge Agulló</h3>                   
-    """)
+    return render(request, 'page_test.html')
     
 def year_list(request):
     html = """
