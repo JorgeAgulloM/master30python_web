@@ -62,7 +62,16 @@
 </body>
 
 <footer>
-    Master Python Web con Django &copy; Jorge Agulló
+    Master Python Web con Django | Jorge Agulló - Android & Python Developer &copy;{% now "d/m/Y - H:i:s" %}
+    {% comment "This is a comment" %} 
+        Se puede formatear la fecha:
+            "H:i": Horas y minutos (formato de 24 horas).
+            "h:i A": Horas y minutos con AM/PM.
+            "Y-m-d": Año, mes y día.
+            "D, d M Y H:i:s": Día de la semana, día del mes, mes, año, horas, minutos y segundos.
+        Ejem:
+            {% now "d/m/Y - H:i:s" %}
+    {% endcomment %}
 </footer>
 
 </html>
