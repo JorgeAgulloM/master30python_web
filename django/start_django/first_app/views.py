@@ -52,6 +52,7 @@ def year_list(request):
         year += 1
         
     return render(request, 'year_list.html', {
+        'name': 'Jorge',
         'title': 'Year List',
         'my_var': 'I am a variable, i`m on the view',
         'years' : years
