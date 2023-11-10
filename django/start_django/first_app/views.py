@@ -61,15 +61,17 @@ def year_list(request):
     return render(request, 'year_list.html', params)
     
 def contact(request, name:str='', surname:str=''):
-    html = '<h3>Introduce nombre/apellido en la url</h3>'
+    welcome = 'Introduce nombre/apellido en la url'
     
     if name and surname:
-        html = f'<h3>Hello {name} {surname}, how are you?</h3>'
+        welcome = f'Hello {name} {surname}, how are you?'
     elif name:
-        html = f'<h3>Hello {name}, how are you?</h3>'
+        welcome = f'<h3>Hello {name}, how are you?</h3>'
         
-    return HttpResponse(layout + f"""
-        <h1>Contact page</h1>                   
-        {html}                   
-        <h5>Created by Jorge Agulló</h5>
-    """)
+    params = {
+        'title': 'Contact page',
+        'welcome': welcome,
+        'creator': 'Created by Jorge Agulló'
+    }
+        
+    return render(request, 'contact.html', params)
