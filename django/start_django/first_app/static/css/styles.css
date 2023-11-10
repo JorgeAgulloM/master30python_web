@@ -78,3 +78,59 @@ nav ul li a:hover{
     color: white;
     transition: all 300ms;
 }
+
+.bar{
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.left-corner{
+    display: block;
+    border-left: 20px solid transparent;
+    border-top: 10px solid #2B2F30;
+    float: left;
+}
+
+.backfilling{
+    display: block;
+    width: 1210px;
+    height: 10px;
+    background: #2B2F30;
+    float: left;
+}
+
+.right-corner{
+    display: block;
+    border-right: 20px solid transparent;
+    border-top: 10px solid #2B2F30;
+    float: right;
+}
+
+/* Central Content Style */ 
+
+#content{
+    width: 1212px;
+    min-height: 930px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.box{
+    background: white;
+    width: 95%;
+    min-height: 930px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.title{
+    color: #444;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+

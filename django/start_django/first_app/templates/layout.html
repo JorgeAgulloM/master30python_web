@@ -44,13 +44,19 @@
             </li>
         </ul>
     </nav>
+    <div class="bar">
+        <span class="left-corner"></span>
+        <span class="backfilling"></span>
+        <span class="right-corner"></span>
+    </div>
 
     <div id="content">
-        <h2 class="title">Test Title</h2>
-        {% block content %}
-            <!-- Content Block -->
-            <strong> Default content!!! </strong>
-        {% endblock %}
+        <div class="box">
+            {% block content %}
+                <!-- Content Block -->
+                <strong> Default content!!! </strong>
+            {% endblock %}
+        </div>
     </div>
 
 </body>
