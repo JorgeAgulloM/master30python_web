@@ -41,7 +41,12 @@ def page_test(request, redirection:int=0):
     elif redirection == 2:
         return redirect('contact', name='Jorge', surname='Agulló')
     
-    return render(request, 'page_test.html')
+    params = {
+        'text': '',
+        'list': [1, 2, 3, 4, 5, 6]    
+    }
+    
+    return render(request, 'page_test.html', params)
     
 def year_list(request):
 
