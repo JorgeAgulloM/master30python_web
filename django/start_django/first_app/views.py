@@ -50,13 +50,15 @@ def year_list(request):
     while year <= 2050:
         years.append(str(year)) 
         year += 1
-        
-    return render(request, 'year_list.html', {
+    
+    params = {
         'name': 'Jorge',
         'title': 'Year List',
         'my_var': 'I am a variable, i`m on the view',
         'years' : years
-    })
+    }    
+    
+    return render(request, 'year_list.html', params)
     
 def contact(request, name:str='', surname:str=''):
     html = '<h3>Introduce nombre/apellido en la url</h3>'

@@ -28,19 +28,19 @@
     <nav>
         <ul>
             <li>
-                <a href='/index'>Index</a>
+                <a href="{% url 'index' %}">Index</a>
             </li>
             <li>
-                <a href='/helloworld'>Hello World</a>
+                <a href="{% url 'hello_world' %}">Hello World</a>
             </li>
             <li>
-                <a href='/pagetest'>Page Test</a>
+                <a href="{% url 'page_test' %}">Page Test</a>
             </li>
             <li>
-                <a href='/yearlist'>Year List</a>
+                <a href="{% url 'year_list' %}">Year List</a>
             </li>
             <li>
-                <a href='/contact'>Contact Page</a>
+                <a href="{% url 'contact' 'Jorge' 'Default' %}">Contact Page</a>
             </li>
         </ul>
     </nav>
