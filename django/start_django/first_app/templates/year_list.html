@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %} 
+    {% if title %}
+        <p>{{title}}</p>
+    {% else %}
+        <strong>Don't have a title</strong>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">
+        {% if title %}
+            <p>{{title}}</p> 
+        {% else %}
+            <strong>Don't have a title</strong>
+        {% endif %}
+    </h1>
+
+    <p>Pair years list to 2050:</p>
+    <ul>
+        {% for year in years %}
+            {% if year|divisibleby:2 == True %}
+                <li>
+                    {{year}} 
+                    {{forloop.counter}} 
+                    {{forloop.revcounter}} 
+                    {{forloop.first}} 
+                </li> 
+            {% endif %}       
+        {% empty %}
+            <strong>Has no results</strong>
+        {% endfor %}
+    </ul>
+
+    <br>
+    <p>Odd years list to 2050:</p>
+    <ul>
+        {% for year in years %}            
+            {% if year|divisibleby:2 == False %}
+                <li>
+                    {{year}} 
+                    {{forloop.counter0}}
+                    {{forloop.revcounter0}} 
+                    {{forloop.last}}
+                </li>
+            {% endif %}
+        {% empty %}
+            <strong>Has no results</strong>
+        {% endfor %}
+    </ul>
+
+    {{my_var}}
+
+{% endblock %}

@@ -44,20 +44,18 @@ def page_test(request, redirection:int=0):
     return render(request, 'page_test.html')
     
 def year_list(request):
-    html = """
-        <p>Pair years list to 2050:</p>
-        <ul>
-    """
-    year = 2021
-    while year <= 2050:
-        if year % 2 == 0:
-            html += f'<li>{str(year)}</li>'
-        year += 1
-         
-    html += '</ul>'
-    
-    return HttpResponse(layout+html)
 
+    year = 2021
+    years = []
+    while year <= 2050:
+        years.append(str(year)) 
+        year += 1
+        
+    return render(request, 'year_list.html', {
+        'title': 'Year List',
+        'my_var': 'I am a variable, i`m on the view',
+        'years' : years
+    })
     
 def contact(request, name:str='', surname:str=''):
     html = '<h3>Introduce nombre/apellido en la url</h3>'
