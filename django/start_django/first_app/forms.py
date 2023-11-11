@@ -13,7 +13,7 @@ class ArticleForm(forms.Form):
             }
         ),
         validators=[
-            validators.MaxLengthValidator(5, 'Title is small'),
+            validators.MinLengthValidator(5, 'Title is small'),
             validators.RegexValidator('^[a-zA-Z0-9 ñÑ]*$', 'Invalid characters', 'invalid_title')
         ]
     )

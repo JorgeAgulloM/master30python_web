@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from first_app.models import Article
 from django.db.models import Q
 from first_app.forms import ArticleForm
+from django.contrib import messages
 
 # Create your views here.
 # MVC = Model View Controller
@@ -137,7 +138,8 @@ def get_articles(request):
         # Es necesrio importar Q desde from django.db.models import Q
         # Article.objects.filter( Q(value1) | Q(value2) | Q(condition) | Q(filter) | Q(...) )
         
-        articles = Article.objects.all()    
+        articles = Article.objects.all()
+        articles = reversed(articles)    
                 
     except Exception as e:
         HttpResponse(f'Error: {e}')      
@@ -237,6 +239,9 @@ def full_from_article(request):
                 article.save()
             except Exception as e:
                 return HttpResponse(f'Error: {e}')
+            
+            # Creando un mensaje Flash, solo se muestra una vez
+            messages.success(request, f'Se ha creado un nuevo articulo: Nº {article.id}. \'{title}\'')
             
             return redirect('articles')
         

@@ -18,6 +18,14 @@
         {% endif %}
     </h1>
 
+    {% if messages %}
+        {% for message in messages %}
+            <div class='message'>
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
     <ul>
         {% for article in articles %}
             <li>
