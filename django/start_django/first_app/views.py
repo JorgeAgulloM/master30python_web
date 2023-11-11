@@ -175,3 +175,45 @@ def delete_article(request, id):
         HttpResponse(f'Error: {e}')
         
     return redirect('articles')
+
+
+########  Using HTTP Methods ########
+
+
+def form_article(request):
+            
+    return render(request, 'create_article.html')
+
+def save_article(request):
+
+    article: Article
+
+    if request.method == 'POST':
+        
+        title = request.POST['title']
+        
+        if len(title) < 5:
+            return HttpResponse('<strong>The title es small</strong>')
+        
+        content = request.POST['content']
+                
+        if len(content) < 15:
+            return HttpResponse('<strong>The content es small</strong>')
+        
+        public = request.POST['public']
+        
+        article = Article(
+            title=title,
+            content=content,
+            public=public
+        )
+        
+    try:  
+        article.save()
+    except Exception as e:
+        return HttpResponse(f'Error: {e}')
+        
+    return HttpResponse(f'<h2>Guardado: {article.title}<h2>')
+    
+
+    
