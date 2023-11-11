@@ -32,6 +32,7 @@ urlpatterns = [
     path('contact/<str:name>', views.contact, name='contact'),
     path('contact/<str:name>/<str:surname>', views.contact, name='contact'),
     path('create_article/<str:title>/<str:content>/<str:public>', views.create_article, name='create_article'),
-    path('get_article/<str:title>', views.get_article, name='get_article'),
+    path('article/<str:title>', views.get_article, name='article'),
+    path('articles/', views.get_articles, name='articles'),
     path('update_article/<str:id>', views.update_article, name='update_article'),
 ]

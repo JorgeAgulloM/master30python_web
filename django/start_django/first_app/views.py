@@ -101,6 +101,20 @@ def get_article(request, title:str):
     
     return HttpResponse(f'Articulo: {get.title} - {get.content}')
 
+def get_articles(request):
+     
+    try:
+        articles = Article.objects.all()      
+    except Exception as e:
+        HttpResponse(f'Error: {e}')      
+
+    params = {
+        'title': 'Articles',
+        'articles': articles
+    }
+
+    return render(request, 'articles.html', params)
+
 def update_article(request, id:int):
     
     try:

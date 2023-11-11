@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %} 
+    {% if title %}
+        <p>{{title}}</p>
+    {% else %}
+        <strong>Don't have a title</strong>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="title">
+        {% if title %}
+            <p>{{title}}</p> 
+        {% else %}
+            <strong>Don't have a title</strong>
+        {% endif %}
+    </h1>
+
+    <ul>
+        {% for article in articles %}
+            <li>{{article.id}}. {{article.title}} - {{article.content}} </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
