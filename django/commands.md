@@ -18,3 +18,6 @@ Run Server
 
 Generate app
 - python manage.py startapp <name_of_app>
+
+Migrate update db models
+- python manage.py makemigrations
