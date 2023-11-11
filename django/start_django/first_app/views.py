@@ -104,7 +104,9 @@ def get_article(request, title:str):
 def get_articles(request):
      
     try:
-        articles = Article.objects.all()      
+        # Se puede usar order_by() en vez de all(), order_by('id'), order_by('-id') `inverso` 
+        # Se puede limitar la consulta usando las opciones de segregación de las listas, como [:3]
+        articles = Article.objects.all()    
     except Exception as e:
         HttpResponse(f'Error: {e}')      
 
