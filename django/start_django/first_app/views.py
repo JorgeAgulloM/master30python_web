@@ -135,3 +135,12 @@ def update_article(request, id:int):
         HttpResponse(f'Error: {e}')
         
     return HttpResponse(f'Update Article: {get.title} - {get.content}')
+
+def delete_article(request, id):
+    try:
+        deleted = Article.objects.get(pk=id)
+        deleted.delete()
+    except Exception as e:
+        HttpResponse(f'Error: {e}')
+        
+    return redirect('articles')

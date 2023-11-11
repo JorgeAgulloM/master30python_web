@@ -20,7 +20,11 @@
 
     <ul>
         {% for article in articles %}
-            <li>{{article.id}}. {{article.title}} - {{article.content}} </li>
+            <li>
+                <h4>{{article.id}}. {{article.title}} - <a href="{% url 'delete_article' id=article.id %}">Delete</a></h4>
+                <p>{{article.content}}</p>
+            </li>
+            <br/>
         {% endfor %}
     </ul>
 
