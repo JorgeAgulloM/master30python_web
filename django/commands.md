@@ -13,6 +13,9 @@ Start proyect django
 Generar BBDD Sqlite3
 - python manage.py migrate
 
+Create Admin super user Django
+- python manage.py createsuperuser 
+
 Run Server
 - python manage.py runserver
 
