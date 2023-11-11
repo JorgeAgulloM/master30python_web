@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load filters %}
+
+{% block title %} Django - Full Forms | Create Article {% endblock %}
+
+{% block content %}
+
+    <h1 class="title">Django - Full Forms | Create Article</h1>             
+
+    <form action="" method="POST">
+
+        {% csrf_token %}
+
+        {% comment "forms" %}
+            {{form}} Formulario simple
+            {{form.as_p}} Formulario con objetos dentro de <p>
+            {{form.as_ul}} Formulario con objetos dentro de <ul>
+            ...
+        {% endcomment %}
+
+        {{form.as_p}}
+
+        <input type="submit" value='Save' />
+
+    </form>
+    
+{% endblock %}

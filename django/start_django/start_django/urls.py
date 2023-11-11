@@ -38,4 +38,5 @@ urlpatterns = [
     path('article/delete/<str:id>', views.delete_article, name='delete_article'),
     path('article/form/', views.form_article, name='form_article'),
     path('article/save/', views.save_article, name='save_article'),
+    path('article/full_from/', views.full_from_article, name='full_from_article'),
 ]

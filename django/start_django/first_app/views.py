@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from first_app.models import Article
 from django.db.models import Q
+from first_app.forms import ArticleForm
 
 # Create your views here.
 # MVC = Model View Controller
@@ -177,8 +178,7 @@ def delete_article(request, id):
     return redirect('articles')
 
 
-########  Using HTTP Methods ########
-
+########  Using HTTP Methods & Forms ########
 
 def form_article(request):
             
@@ -215,5 +215,35 @@ def save_article(request):
         
     return HttpResponse(f'<h2>Guardado: {article.title}<h2>')
     
-
+def full_from_article(request):
+    
+    if request.method == 'POST':
+        form = ArticleForm(request.POST)
+        
+        if form.is_valid():
+            data=form.cleaned_data
+            
+            title = data.get('title')
+            content = data.get('content')
+            public = data.get('public')
+            
+            article = Article(
+                title=title,
+                content=content,
+                public=public
+            )
+                            
+            try:  
+                article.save()
+            except Exception as e:
+                return HttpResponse(f'Error: {e}')
+            
+            return redirect('articles')
+        
+    else:
+        form = ArticleForm()
+    
+    return render(request, 'create_form_article.html', {
+        'form': form
+    })
     
