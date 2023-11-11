@@ -100,3 +100,22 @@ def get_article(request, title:str):
         HttpResponse(f'Error: {e}')
     
     return HttpResponse(f'Articulo: {get.title} - {get.content}')
+
+def update_article(request, id:int):
+    
+    try:
+        
+        update = Article.objects.get(pk=id)
+        
+        update.title='My old title'
+        update.content='My old content'
+        update.public=True
+        
+        update.save()
+        
+        get = Article.objects.get(pk=id)
+        
+    except Exception as e:
+        HttpResponse(f'Error: {e}')
+        
+    return HttpResponse(f'Update Article: {get.title} - {get.content}')
