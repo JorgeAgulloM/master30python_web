@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
 
 # Import my views
 from first_app import views
@@ -40,3 +41,8 @@ urlpatterns = [
     path('article/save/', views.save_article, name='save_article'),
     path('article/full_from/', views.full_from_article, name='full_from_article'),
 ]
+
+# Configuration to show images
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

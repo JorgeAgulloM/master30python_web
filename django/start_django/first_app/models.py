@@ -42,7 +42,7 @@ Running migrations:
 class Article(models.Model):
     title=models.CharField(max_length=150)
     content=models.TextField()
-    image=models.ImageField(default='null')
+    image=models.ImageField(default='null', upload_to='articles')
     public=models.BooleanField(verbose_name='Is Public?') # verbose_name - Cambiará el nombre del parámetro en el panel de admin
     created_at=models.DateTimeField(auto_now_add=True, verbose_name='Created')
     updated_at=models.DateTimeField(auto_now=True, verbose_name='Updated')
