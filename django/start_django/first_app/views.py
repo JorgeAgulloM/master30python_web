@@ -91,3 +91,12 @@ def create_article(request, title:str, content:str, public:str):
     new.save()
     
     return HttpResponse(f'Created article: {new.title} - {new.content}')
+
+def get_article(request, title:str):
+    
+    try:
+        get = Article.objects.get(title=title)
+    except Exception as e:
+        HttpResponse(f'Error: {e}')
+    
+    return HttpResponse(f'Articulo: {get.title} - {get.content}')
