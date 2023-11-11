@@ -31,6 +31,9 @@
             <li>
                 <h4>{{article.id}}. {{article.title}} - <a href="{% url 'delete_article' id=article.id %}">Delete</a></h4>
                 <strong>{{article.created_at}}</strong>
+                {% if article.image != 'null' %}
+                    <img src="{{article.image.url}}" alt="" />
+                {% endif %}
                 <p>{{article.content}}</p>
             </li>
             <br/>
