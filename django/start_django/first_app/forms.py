@@ -1,4 +1,5 @@
 from django import forms
+from django.core import validators
 
 class ArticleForm(forms.Form):
     title=forms.CharField(
@@ -10,7 +11,11 @@ class ArticleForm(forms.Form):
                 'placeholder': 'Write your title',
                 'class': 'title_form_article'
             }
-        )
+        ),
+        validators=[
+            validators.MaxLengthValidator(5, 'Title is small'),
+            validators.RegexValidator('^[a-zA-Z0-9 ñÑ]*$', 'Invalid characters', 'invalid_title')
+        ]
     )
     content=forms.CharField(
         label='Content',

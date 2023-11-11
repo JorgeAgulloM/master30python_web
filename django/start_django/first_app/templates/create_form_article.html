@@ -7,6 +7,12 @@
 
     <h1 class="title">Django - Full Forms | Create Article</h1>             
 
+    {% if form.errors %}
+        <strong class="red">
+            There are errors in the form
+        </strong>
+    {% endif %}
+
     <form action="" method="POST">
 
         {% csrf_token %}
