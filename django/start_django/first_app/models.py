@@ -40,14 +40,15 @@ Running migrations:
 """
 
 class Aricle(models.Model):
-    title=models.CharField(max_length=100)
+    title=models.CharField(max_length=150)
     content=models.TextField()
+    image=models.ImageField(default='null')
     public=models.BooleanField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
 
 class Category(models.Model):
-    name=models.CharField(max_length=100)
+    name=models.CharField(max_length=110)
     description=models.CharField(max_length=250)
     creted_at=models.DateField()
     
