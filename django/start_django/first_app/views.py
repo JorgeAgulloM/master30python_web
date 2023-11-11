@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from first_app.models import Article
+from django.db.models import Q
 
 # Create your views here.
 # MVC = Model View Controller
@@ -124,6 +125,16 @@ def get_articles(request):
         # lte (less than or equal) -> `id__lte`: no key sensitive
         # articles = Article.objects.filter(id__lte=10)
         # Son combinables...
+        
+        # Puedo añadir `exclude()` y pasarle como parámetro el valor que quiero excluir
+        
+        # Puedo crear consultas directas o crudas a sql saltando la capa de abstracción
+        # de Django, por supuesto no es recomendable 
+        # Article.objects.raw() y le paso como parámetro la consulta
+        
+        # Usar el operador lógico OR
+        # Es necesrio importar Q desde from django.db.models import Q
+        # Article.objects.filter( Q(value1) | Q(value2) | Q(condition) | Q(filter) | Q(...) )
         
         articles = Article.objects.all()    
                 
