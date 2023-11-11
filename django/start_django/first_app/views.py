@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
+from first_app.models import Article
 
 # Create your views here.
 # MVC = Model View Controller
@@ -80,3 +81,13 @@ def contact(request, name:str='', surname:str=''):
     }
         
     return render(request, 'contact.html', params)
+
+def create_article(request, title:str, content:str, public:str):
+    new = Article(
+        title=title,
+        content=content,
+        public=bool(public)
+    )
+    new.save()
+    
+    return HttpResponse(f'Created article: {new.title} - {new.content}')

@@ -31,4 +31,5 @@ urlpatterns = [
     path('contact/', views.contact, name='contact'),
     path('contact/<str:name>', views.contact, name='contact'),
     path('contact/<str:name>/<str:surname>', views.contact, name='contact'),
+    path('create_article/<str:title>/<str:content>/<str:public>', views.create_article, name='create_article'),
 ]
