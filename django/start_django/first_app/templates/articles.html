@@ -28,15 +28,26 @@
 
     <ul>
         {% for article in articles %}
-            <li>
-                <h4>{{article.id}}. {{article.title}} - <a href="{% url 'delete_article' id=article.id %}">Delete</a></h4>
-                <strong>{{article.created_at}}</strong>
+            <article class="article-item">
+
                 {% if article.image != 'null' %}
-                    <img src="{{article.image.url}}" alt="" />
+                    <div class="image">
+                        <img src="{{article.image.url}}" alt="" />
+                    </div>
                 {% endif %}
-                <p>{{article.content}}</p>
-            </li>
-            <br/>
+
+                <div class="data">
+                    <span class="date">{{article.created_at}}</span>
+                    <h2>{{article.title}}</h2>
+                    <p>{{article.content}}</p>
+                    <p><a href="{% url 'delete_article' id=article.id %}" class="btn btn-delete">Delete</a></p>
+                </div>
+
+
+                
+                <div class="clearfix"></div>
+            </article>
+
         {% endfor %}
     </ul>
 

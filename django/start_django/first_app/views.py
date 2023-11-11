@@ -138,7 +138,7 @@ def get_articles(request):
         # Es necesrio importar Q desde from django.db.models import Q
         # Article.objects.filter( Q(value1) | Q(value2) | Q(condition) | Q(filter) | Q(...) )
         
-        articles = Article.objects.all()
+        articles = Article.objects.filter(public=True)
         articles = reversed(articles)    
                 
     except Exception as e:
