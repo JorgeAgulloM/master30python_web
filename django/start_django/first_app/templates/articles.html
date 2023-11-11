@@ -22,6 +22,7 @@
         {% for article in articles %}
             <li>
                 <h4>{{article.id}}. {{article.title}} - <a href="{% url 'delete_article' id=article.id %}">Delete</a></h4>
+                <strong>{{article.created_at}}</strong>
                 <p>{{article.content}}</p>
             </li>
             <br/>

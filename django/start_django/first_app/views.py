@@ -106,7 +106,27 @@ def get_articles(request):
     try:
         # Se puede usar order_by() en vez de all(), order_by('id'), order_by('-id') `inverso` 
         # Se puede limitar la consulta usando las opciones de segregación de las listas, como [:3]
+        # Se puede usar filtrado
+        # articles = Article.objects.filter(title='My title', id=1)
+        # Se pueden usar los llamados ````lookups````
+        # Similar a like para sql -> `title__contains`
+        # articles = Article.objects.filter(title__contains='My')
+        # Exact -> `title__exact`: key sensitive
+        # articles = Article.objects.filter(title__exact='My') 
+        # IExact -> `title__iexact`: no key sensitive
+        # articles = Article.objects.filter(title__exact='My')
+        # gt (Graded than) -> `id__gt`: no key sensitive
+        # articles = Article.objects.filter(id__gt=10)
+        # gte (Graded than or equal) -> `id__gte`: no key sensitive
+        # articles = Article.objects.filter(id__gte=10)
+        # lt (less than) -> `id__lt`: no key sensitive
+        # articles = Article.objects.filter(id__lt=10)
+        # lte (less than or equal) -> `id__lte`: no key sensitive
+        # articles = Article.objects.filter(id__lte=10)
+        # Son combinables...
+        
         articles = Article.objects.all()    
+                
     except Exception as e:
         HttpResponse(f'Error: {e}')      
 
