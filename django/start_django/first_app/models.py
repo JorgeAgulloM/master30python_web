@@ -43,12 +43,33 @@ class Article(models.Model):
     title=models.CharField(max_length=150)
     content=models.TextField()
     image=models.ImageField(default='null')
-    public=models.BooleanField()
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now=True)
+    public=models.BooleanField(verbose_name='Is Public?') # verbose_name - Cambiará el nombre del parámetro en el panel de admin
+    created_at=models.DateTimeField(auto_now_add=True, verbose_name='Created')
+    updated_at=models.DateTimeField(auto_now=True, verbose_name='Updated')
+    
+    class Meta:
+      verbose_name='Article'
+      verbose_name_plural='Articles'
+      ordering=['id'] # ordering=['-id'] Invertida
+      
+    def __str__(self) -> str: # ¡¡¡¡¡MAGIC METHOD!!!!!! Permite mostrar de una forma personalizada el valor del modelo, por ejemplo en admin
+      
+      if self.public:
+        public='Public article'
+      else:
+        public='Private article'
+      
+      str_date = str(self.created_at)
+      date=str_date.split()[0]
+      
+      return f'({public}) | Created at {date} | {self.title}'
 
 class Category(models.Model):
     name=models.CharField(max_length=110)
     description=models.CharField(max_length=250)
     creted_at=models.DateField()
+
+    class Meta:
+      verbose_name='Category'
+      verbose_name_plural='Categorys'
     

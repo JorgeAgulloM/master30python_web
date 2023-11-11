@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'first_app',
+    'first_app.apps.FirstAppConfig', # verbose_name - Cambiará el nombre del parámetro en el panel de admin
 ]
 
 MIDDLEWARE = [
