@@ -39,7 +39,7 @@ Running migrations:
   Applying first_app.0001_initial... OK
 """
 
-class Aricle(models.Model):
+class Article(models.Model):
     title=models.CharField(max_length=150)
     content=models.TextField()
     image=models.ImageField(default='null')
