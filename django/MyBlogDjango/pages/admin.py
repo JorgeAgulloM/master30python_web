@@ -5,6 +5,10 @@ from .models import Page
 
 class PageAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at',)
+    search_fields = ('title', 'content') # Añade un buscador
+    list_filter = ('visible',) # Añade un filtro
+    list_display = ('title', 'visible', 'created_at')
+    ordering = ('-created_at',)
 
 admin.site.register(Page, PageAdmin)
 
