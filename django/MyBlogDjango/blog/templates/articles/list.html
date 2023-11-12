@@ -6,4 +6,47 @@
 
 {% block content %}
     <h1 class='title'>{{title}}</h1>
+
+    <ul>
+        {% for article in articles %}
+            <article class="article-item">
+
+                {% if article.image != 'null' %}
+                    <script>
+                        var img = new Image();
+                        img.src = "{{ article.image.url }}";
+                        img.onload = function() {
+                            <div class="image">
+                                <img src="{{article.image.url}}" alt="" />
+                            </div>
+                            document.getElementById('imagen').src = img.src;
+                        };
+                        img.onerror = function() {
+                            
+                            console.log("La imagen no existe");
+                        };
+                    </script>
+                {% endif %}
+
+                <div class="data">
+                    <h2>{{article.title}}</h2>
+                    <p>
+                        {% for category in article.categorys.all %}
+                            <a href="#">{{category}}</a> |
+                        {% endfor %}
+                    </p>
+                    <span class="date">
+                        {{article.user.first_name}} {{article.user.last_name}}
+                        |
+                        {{article.created_at}}
+                    </span>
+                    <p>{{article.content|safe}}</p>
+                </div>
+
+                <div class="clearfix"></div>
+            </article>
+
+        {% endfor %}
+    </ul>
+
 {% endblock content %}
