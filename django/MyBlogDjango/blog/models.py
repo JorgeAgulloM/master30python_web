@@ -21,8 +21,8 @@ class Article(models.Model):
     content=RichTextField(verbose_name='Page content')
     image=models.ImageField(default='null', verbose_name='Image') 
     public=models.BooleanField(verbose_name='Is public?')
-    user=models.ForeignKey(User, verbose_name='Created by user', on_delete=models.CASCADE)
-    categorys=models.ManyToManyField(Category, verbose_name='Categorys', null=True, blank=True)
+    user=models.ForeignKey(User, editable=False, verbose_name='Created by user', on_delete=models.CASCADE)
+    categorys=models.ManyToManyField(Category, verbose_name='Categorys', blank=True)
     created_at=models.DateTimeField(auto_now_add=True, verbose_name='Created at')
     updated_at=models.DateTimeField(auto_now=True, verbose_name='Updated at')
 
