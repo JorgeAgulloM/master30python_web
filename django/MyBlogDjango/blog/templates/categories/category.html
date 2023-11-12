@@ -9,7 +9,9 @@
     <p>{{category.description}}</p>
 
     <ul>
-        {% include 'articles/articles.html' with articles=category.article_set.all %}
+        {% include 'articles/articles.html' with articles=articles %}
     </ul>
+
+    {% include "articles/pagination.html" %}
 
 {% endblock content %}

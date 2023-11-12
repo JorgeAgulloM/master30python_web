@@ -36,9 +36,17 @@ def category(request, category_id):
     
     category = get_object_or_404(Category, id=category_id)
     
+    articles = Article.objects.filter(categorys=category)
+    
+    paginator = Paginator(articles, 2)
+    
+    page = request.GET.get('page')
+    page_articles = paginator.get_page(page)
+    
     params = {
         'title': 'Categories',
-        'category': category
+        'category': category,
+        'articles': page_articles,
     }
     
     return render(request, 'categories/category.html', params)
