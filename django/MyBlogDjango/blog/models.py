@@ -19,7 +19,7 @@ class Category(models.Model):
 class Article(models.Model):
     title=models.CharField(max_length=150, verbose_name='Page title')
     content=RichTextField(verbose_name='Page content')
-    image=models.ImageField(default='null', verbose_name='Image') 
+    image=models.ImageField(default='null', verbose_name='Image', upload_to='articles') 
     public=models.BooleanField(verbose_name='Is public?')
     user=models.ForeignKey(User, editable=False, verbose_name='Created by user', on_delete=models.CASCADE)
     categorys=models.ManyToManyField(Category, verbose_name='Categorys', blank=True)
@@ -29,6 +29,7 @@ class Article(models.Model):
     class Meta:
         verbose_name='Article'
         verbose_name_plural='Articles'
+        ordering=['-created_at']
         
     def __str__(self) -> str:
         return self.title
