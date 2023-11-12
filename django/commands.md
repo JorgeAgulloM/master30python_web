@@ -11,6 +11,7 @@ Start proyect django
 - django-admin startproject start_django 
 
 Generar BBDD Sqlite3
+- cd to new proyect path
 - python manage.py migrate
 
 Create Admin super user Django
