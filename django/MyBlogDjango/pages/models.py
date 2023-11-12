@@ -14,5 +14,5 @@ class Page(models.Model):
         verbose_name='Page'
         verbose_name_plural='Pages'
         
-        def __str__(self) -> str:
-            return self.title
+    def __str__(self) -> str:
+        return self.title
