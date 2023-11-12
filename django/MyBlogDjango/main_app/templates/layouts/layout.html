@@ -30,10 +30,20 @@
             <li>
                 <a href="{% url 'index' %}">Index</a>
             </li>
-            {% for page in pages %}
             <li>
-                <a href="{% url 'page' page.2 %}">{{page.1}}</a>
+                <a href="{% url 'articles' %}">Articles</a>
+                <ul>
+                    {% for category in categories %}
+                        <li>
+                            <a href="{% url 'index' %}">{{category.1}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
             </li>
+            {% for page in pages %}
+                <li>
+                    <a href="{% url 'page' page.2 %}">{{page.1}}</a>
+                </li>
             {% endfor %}
         </ul>
     </nav>
