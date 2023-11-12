@@ -180,6 +180,26 @@ nav > ul > li:hover > ul > li:hover a{
     margin: 0 auto;
 }
 
+.box .image{
+    width: 45%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.box .image img{
+    width: 100%;
+}
+
+.box a{
+    color: #444;
+    transition: all 300ms
+}
+
+.box a:hover{
+    color: #2ba977;
+}
+
 .box form{
     width: 40%;
 }
