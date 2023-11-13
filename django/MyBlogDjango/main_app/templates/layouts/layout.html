@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+            <!-- Title block -->
+        {% endblock %}
+        | Jorge Agulló web
+    </title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}" />
+
+</head>
+
+<body>
+    <!-- Web Heder -->
+    <header>
+        <div id="logo">
+            <!-- Logo -->
+            <img src="{% static 'images/logo.png' %}" alt=""/>
+            <h1>Blog with Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Index</a>
+            </li>
+            {% if user.email %}
+                <li>
+                    <a href="#">Categories</a>
+                    <ul>
+                        {% for category in categories %}
+                            <li>
+                                <a href="{% url 'category' category.0 %}">{{category.1}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% for page in pages %}
+                    <li>
+                        <a href="{% url 'page' page.2 %}">{{page.1}}</a>
+                    </li>
+                {% endfor %}
+                <li>
+                    <a href="{% url 'logout' %}">Logout</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'register' %}">Registro</a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}">Login</a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </nav>
+    <div class="bar">
+        <span class="left-corner"></span>
+        <span class="backfilling"></span>
+        <span class="right-corner"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content %}
+                <!-- Content Block -->
+                <strong> Default content!!! </strong>
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+
+<footer>
+    Blog developed with Django | Jorge Agulló - Android & Python Developer &copy;{% now "d/m/Y - H:i:s" %}
+    {% comment "This is a comment" %} 
+        Se puede formatear la fecha:
+            "H:i": Horas y minutos (formato de 24 horas).
+            "h:i A": Horas y minutos con AM/PM.
+            "Y-m-d": Año, mes y día.
+            "D, d M Y H:i:s": Día de la semana, día del mes, mes, año, horas, minutos y segundos.
+        Ejem:
+            {% now "d/m/Y - H:i:s" %}
+    {% endcomment %}
+</footer>
+
+</html>

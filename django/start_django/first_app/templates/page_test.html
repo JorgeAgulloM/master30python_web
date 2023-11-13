@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load filters %}
+
+{% block title %} Test Page {% endblock %}
+
+{% block content %}
+
+    <h1 class="title">My web page</h1>             
+    {% comment "this is a comment" %}
+        Esto es un fitro:
+            primer parámetro | segundo parámetro
+            {{'Created by Jorge Agulló'|cut:' '}}
+
+    {% endcomment %}      
+    <h3>{{'Created by Jorge Agulló ñ'|cut:'ñ'}}</h3>
+    <br>
+    <h3>Filters:</h3>
+    <br>
+    <h4>Text: {{text|default:"Has not text"}}</h4>
+    <h4>list-First: {{list|first}}</h4>
+    <h4>List-Last: {{list|last}}</h4>
+    <h4>List-Join: {{list|join:', '}}</h4>
+    <h4>List-random: {{list|random}}</h4>
+    <br>
+    <h4>Text-uppercase: {{'This is my text'|upper}}</h4>
+    <h4>Text-Length: {{'This is my text'|length}}</h4>
+    <h4>Text-striptags: {{'<h1>This is</h1> <strong>my text</strong>'}}</h4>
+    <h4>Text-striptags: {{'<h1>This is</h1> <strong>my text</strong>'|striptags}}</h4>
+    <h4>Text-striptags+wordcount: {{'<h1>This is</h1> <strong>my text</strong>'|striptags|wordcount}}</h4>
+    <br>
+    <h3>Personaliced filters:</h3>
+    <br>
+
+    {{"Jorge"|greeting|safe}}
+    
+{% endblock %}

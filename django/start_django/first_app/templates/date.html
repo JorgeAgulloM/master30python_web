@@ -1,0 +1,40 @@
+<br>
+<hr>
+<br>
+<h1>{{hello}}: {{name}}</h1>
+<h1>We are in 2023</h1>
+<p>Pair years list to 2050:</p>
+<ul>
+    {% for year in years %}
+        {% if year|divisibleby:2 == True %}
+            <li>
+                {{year}} 
+                {{forloop.counter}} 
+                {{forloop.revcounter}} 
+                {{forloop.first}} 
+            </li> 
+        {% endif %}       
+    {% empty %}
+        <strong>Has no results</strong>
+    {% endfor %}
+</ul>
+
+<br>
+<p>Odd years list to 2050:</p>
+<ul>
+    {% for year in years %}            
+        {% if year|divisibleby:2 == False %}
+            <li>
+                {{year}} 
+                {{forloop.counter0}}
+                {{forloop.revcounter0}} 
+                {{forloop.last}}
+            </li>
+        {% endif %}
+    {% empty %}
+        <strong>Has no results</strong>
+    {% endfor %}
+</ul>
+<br>
+<hr>
+<br>

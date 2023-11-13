@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+            <!-- Title block -->
+        {% endblock %}
+        | Jorge Agulló web
+    </title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/styles.css' %}" />
+
+</head>
+
+<body>
+    <!-- Web Heder -->
+    <header>
+        <div id="logo">
+            <!-- Logo -->
+            <img src="{% static 'images/logo.png' %}" alt=""/>
+            <h1>Web site with Django</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url 'index' %}">Index</a>
+            </li>
+            <li>
+                <a href="{% url 'hello_world' %}">Hello World</a>
+            </li>
+            <li>
+                <a href="{% url 'page_test' %}">Page Test</a>
+            </li>
+            <li>
+                <a href="{% url 'year_list' %}">Year List</a>
+            </li>
+            <li>
+                <a href="{% url 'contact' 'Jorge' 'Default' %}">Contact Page</a>
+            </li>
+            <li>
+                <a href="{% url 'articles' %}">Articles</a>
+            </li>
+            <li>
+                <a href="{% url 'form_article' %}">Create Article</a>
+            </li>
+            <li>
+                <a href="{% url 'full_from_article' %}">Full Form Article</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="bar">
+        <span class="left-corner"></span>
+        <span class="backfilling"></span>
+        <span class="right-corner"></span>
+    </div>
+
+    <div id="content">
+        <div class="box">
+            {% block content %}
+                <!-- Content Block -->
+                <strong> Default content!!! </strong>
+            {% endblock %}
+        </div>
+    </div>
+
+</body>
+
+<footer>
+    Master Python Web con Django | Jorge Agulló - Android & Python Developer &copy;{% now "d/m/Y - H:i:s" %}
+    {% comment "This is a comment" %} 
+        Se puede formatear la fecha:
+            "H:i": Horas y minutos (formato de 24 horas).
+            "h:i A": Horas y minutos con AM/PM.
+            "Y-m-d": Año, mes y día.
+            "D, d M Y H:i:s": Día de la semana, día del mes, mes, año, horas, minutos y segundos.
+        Ejem:
+            {% now "d/m/Y - H:i:s" %}
+    {% endcomment %}
+</footer>
+
+</html>

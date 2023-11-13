@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %} 
+    {% if title %}
+        {{title}}
+    {% else %}
+        <strong>Don't have a title</strong>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="title">
+        {% if title %}
+            <p>{{title}}</p> 
+        {% else %}
+            <strong>Don't have a title</strong>
+        {% endif %}
+    </h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class='message'>
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <ul>
+        {% for article in articles %}
+            <article class="article-item">
+
+                {% if article.image != 'null' %}
+                    <div class="image">
+                        <img src="{{article.image.url}}" alt="" />
+                    </div>
+                {% endif %}
+
+                <div class="data">
+                    <span class="date">{{article.created_at}}</span>
+                    <h2>{{article.title}}</h2>
+                    <p>{{article.content}}</p>
+                    <p><a href="{% url 'delete_article' id=article.id %}" class="btn btn-delete">Delete</a></p>
+                </div>
+
+
+                
+                <div class="clearfix"></div>
+            </article>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}

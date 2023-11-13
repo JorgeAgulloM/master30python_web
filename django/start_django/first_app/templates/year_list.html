@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block title %} 
+    {% if title %}
+        {{title}}
+    {% else %}
+        <strong>Don't have a title</strong>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="title">
+        {% if title %}
+            <p>{{title}}</p> 
+        {% else %}
+            <strong>Don't have a title</strong>
+        {% endif %}
+    </h1>
+
+    {% comment%}
+        Podría hacer que solo se hereden las variables que se declaran aquí - añadiendo only al final
+        {% include 'date.html' with hello='Hello from a Django template' only %}
+    {% endcomment %}
+
+    {% include 'date.html' with hello='Hello from a Django template' %}
+
+    {{my_var}}
+
+{% endblock %}
