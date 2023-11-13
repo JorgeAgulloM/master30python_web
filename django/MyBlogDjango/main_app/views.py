@@ -52,6 +52,8 @@ def login_page(request):
         if user is not None:
             login(request, user)
             
+            messages.success(request, 'Successfully logged')
+            
             return redirect('index')
         else:
             messages.warning(request, 'Mistaken identification')
@@ -59,3 +61,9 @@ def login_page(request):
     params = {'title': 'Login'}
     
     return render(request, 'users/login.html', params)
+
+def logout_user(request):
+    
+    logout(request)
+    
+    return redirect('login')
