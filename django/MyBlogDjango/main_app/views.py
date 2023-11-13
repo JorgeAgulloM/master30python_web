@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm
 
 # Create your views here.
@@ -13,6 +14,7 @@ def index(request):
     
     return render(request, 'main_app/index.html', params)
 
+@login_required(login_url='login')
 def about(request):
     
     params = {
@@ -22,6 +24,9 @@ def about(request):
     return render(request, 'main_app/about.html', params)
 
 def register_page(request):
+    
+    if request.user.is_authenticated():
+        return redirect('index')
     
     register_form = RegisterForm
     
@@ -43,6 +48,9 @@ def register_page(request):
 
 def login_page(request):
     
+    if request.user.is_authenticated():
+        return redirect('index')
+    
     if request.method=='POST':
         username=request.POST.get('username')
         password=request.POST.get('password')
@@ -62,6 +70,7 @@ def login_page(request):
     
     return render(request, 'users/login.html', params)
 
+@login_required(login_url='login')
 def logout_user(request):
     
     logout(request)
