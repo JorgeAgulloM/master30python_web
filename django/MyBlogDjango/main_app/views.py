@@ -17,3 +17,11 @@ def about(request):
     }
     
     return render(request, 'main_app/about.html', params)
+
+def register_page(request):
+    
+    params = {
+        'title': 'Register'
+    }
+    
+    return render(request, 'users/register.html', params)
