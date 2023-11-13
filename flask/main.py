@@ -67,6 +67,7 @@ def create_car():
             cursor = mysql.connection.cursor()
             cursor.execute("INSERT INTO cars VALUES(NULL, %s, %s, %s, %s)", (brand, model, price, city))
             cursor.connection.commit()
+            cursor.close()
             
             flash('Has creado un nuevo coche')
             return redirect(url_for('index'))
@@ -75,6 +76,15 @@ def create_car():
             return redirect(url_for('index'))
         
     return render_template('create_car.html')
+
+@app.route(f'{root}/cars')
+def cars():
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM cars')
+    cars = cursor.fetchall()
+    cursor.close()
+    
+    return render_template('cars.html', cars=cars)
     
 if __name__=='__main__':
     app.run(debug=True)
