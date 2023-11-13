@@ -249,13 +249,18 @@ nav > ul > li:hover > ul > li:hover a{
     text-shadow: 0px 0px 1px black;
 }
 
-.message, 
+.message,
+.alert, 
 .alert-success{
     padding: 20px;
     background: #2ba977;
     color: white;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.alert-warning{
+    background: rgb(112, 20, 20);
 }
 
 .title{
