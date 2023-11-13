@@ -39,3 +39,9 @@ def register_page(request):
     }
     
     return render(request, 'users/register.html', params)
+
+def login_page(request):
+    
+    params = {'title': 'Login'}
+    
+    return render(request, 'users/login.html', params)
