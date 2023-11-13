@@ -7,27 +7,43 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1> Web with Flask | Jorge Agulló </h1>
 
-    <hr>
+    <!-- Web Heder -->
+    <header>
+        <div id="logo">
+            <!-- Logo -->
+            <img src="{{ url_for('static', filename='img/flask.png') }}" alt=""/>
+            <h1>Blog with Django</h1>
+        </div>
+    </header>
+
+    <nav>
         <ul>
             <li><a href="/">Inicio</a></li>
             <li><a href="{{ url_for('info')}}">Information</a></li>
             <li><a href="{{ url_for('contact')}}">Contact</a></li>
             <li><a href="{{ url_for('languages')}}">Languages</a></li>
         </ul>
-    <hr>
+    </nav>
+    <div class="bar">
+        <span class="left-corner"></span>
+        <span class="backfilling"></span>
+        <span class="right-corner"></span>
+    </div>
 
-    <section id='content'>
-        {% block content %}
-
-        {% endblock content %}
-    </section>
+    <div id="content">
+        <div class="box">
+            {% block content %}
+                <!-- Content Block -->
+                <strong> Default content!!! </strong>
+            {% endblock %}
+        </div>
+    </div>
 
 </body>
+
 <footer>
-    <hr>
-    <h4> Web with Flask | Jorge Agulló </h4>
+    <h4> Web with Flask | &copy;Jorge Agulló Develop - {{ now.year }}</h4>
 </footer>
 
 </html>
