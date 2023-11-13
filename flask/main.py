@@ -104,6 +104,43 @@ def delete(car_id):
     
     flash('Coche eliminado')
     return redirect(url_for('cars'))
+
+@app.route(f'{root}/edit/<car_id>', methods=['GET', 'POST'])
+def edit(car_id):
+    
+    if request.method == 'POST':
+        try:       
+
+            brand=request.form['brand']
+            model=request.form['model']
+            price=request.form['price']
+            city=request.form['city']
+
+            cursor = mysql.connection.cursor()
+            cursor.execute(
+                """UPDATE cars 
+                    SET brand=%s, 
+                        model=%s, 
+                        price=%s, 
+                        city=%s
+                    WHERE id=%s
+                """, (brand, model, price, city, car_id)
+            )
+            mysql.connection.commit()
+            cursor.close()
+            
+            flash('Has creado un nuevo coche')
+        except Exception as e:
+            print(f'Error: {e}')
+            
+        return redirect(url_for('cars'))
+    
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM cars WHERE id = %s', (car_id))
+    car = cursor.fetchone()
+    cursor.close()
+    
+    return render_template('create_car.html', car=car)
     
 if __name__=='__main__':
     app.run(debug=True)

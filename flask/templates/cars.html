@@ -30,7 +30,7 @@
                 </span>
                 <p>{{car.4}}</p>
                 <p>
-                    <a href="" class='btn btn-warning'>Editar</a>
+                    <a href="{{ url_for('edit', car_id=car.0 )}}" class='btn btn-warning'>Editar</a>
                     <a href="{{ url_for('delete', car_id=car.0 )}}" class='btn btn-danger'>Eliminar</a>
                 </p>
             </div>

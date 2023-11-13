@@ -7,20 +7,24 @@
 
 
 {% block content %}
-    <h1>Create new car</h1>
+    {% if car %}
+        <h1>Edit car: {{car.1}} - {{car.2}}</h1>
+    {% else %}
+        <h1>Create new car</h1>
+    {% endif %}
 
     <form action="" method='POST'>
         <label for="brand">Marca</label>
-        <input type="text" name='brand'>
+        <input type="text" name='brand' {% if car %} value='{{car.1}}' {% endif %}>
 
         <label for="model">Modelo</label>
-        <input type="text" name='model'>
+        <input type="text" name='model' {% if car %} value='{{car.2}}' {% endif %}>
 
         <label for="price">Precio</label>
-        <input type="number" name='price'>
+        <input type="number" name='price' {% if car %} value='{{car.3}}' {% endif %}>
 
         <label for="city">Ciudad</label>
-        <input type="text" name='city'>
+        <input type="text" name='city' {% if car %} value='{{car.4}}' {% endif %}>
 
         <input type="submit" value='Guardar'>
     </form>
