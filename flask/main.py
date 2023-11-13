@@ -80,7 +80,7 @@ def create_car():
 @app.route(f'{root}/cars')
 def cars():
     cursor = mysql.connection.cursor()
-    cursor.execute('SELECT * FROM cars')
+    cursor.execute('SELECT * FROM cars ORDER BY id DESC')
     cars = cursor.fetchall()
     cursor.close()
     
