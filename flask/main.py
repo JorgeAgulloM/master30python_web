@@ -7,8 +7,16 @@ def index():
     return '<h1> Hello World with Flask | Jorge Agulló </h1>'
 
 @app.route('/info')
-def info():
-    return '<h1> Info Page </h1>'
+@app.route('/info/<string:name>')
+@app.route('/info/<string:name>/<string:surname>')
+def info(name:str=None, surname:str=None):
+
+    if not name or not surname:
+        return '<h1> Welcome </h1>' 
+    if not surname:
+        return f'<h1> Welcome, {name}</h1>'
+    
+    return f'<h1> Welcome, {name} {surname}</h1>'
 
 @app.route('/contact')
 def contact():
