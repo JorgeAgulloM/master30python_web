@@ -12,7 +12,7 @@
     {% for car in cars %}
         <article class="article-item">
             <div class="data">
-                <h2><a href="">{{car.1}}</a></h2>
+                <h2><a href="{{ url_for('car', car_id=car.0 )}}">{{car.1}}</a></h2>
                 <span class="date">
                     {{car.2}} 
                     |

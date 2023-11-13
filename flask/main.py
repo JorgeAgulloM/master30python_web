@@ -85,6 +85,15 @@ def cars():
     cursor.close()
     
     return render_template('cars.html', cars=cars)
+
+@app.route(f'{root}/car/<car_id>')
+def car(car_id):
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM cars WHERE id = %s', (car_id))
+    car = cursor.fetchone()
+    cursor.close()
+    
+    return render_template('car.html', car=car)
     
 if __name__=='__main__':
     app.run(debug=True)

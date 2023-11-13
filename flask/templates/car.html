@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{car.2}}
+    {{super()}}
+{% endblock title %}
+
+
+{% block content %}
+    <article class="article-item">
+        <div class="data">
+            <h2><a href="">{{car.1}}</a></h2>
+            <span class="date">
+                {{car.2}} 
+                |
+                {{car.3}}
+            </span>
+            <p>{{car.4}}</p>
+            <p>
+                <a href="" class='btn btn-warning'>Editar</a>
+                <a href="" class='btn btn-danger'>Eliminar</a>
+            </p>
+        </div>
+
+        <div class="clearfix"></div>
+    </article>
+{% endblock content %}
