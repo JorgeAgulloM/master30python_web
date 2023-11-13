@@ -66,7 +66,7 @@ def create_car():
 
             cursor = mysql.connection.cursor()
             cursor.execute("INSERT INTO cars VALUES(NULL, %s, %s, %s, %s)", (brand, model, price, city))
-            cursor.connection.commit()
+            mysql.connection.commit()
             cursor.close()
             
             flash('Has creado un nuevo coche')
@@ -94,6 +94,16 @@ def car(car_id):
     cursor.close()
     
     return render_template('car.html', car=car)
+
+@app.route(f'{root}/delete/<car_id>')
+def delete(car_id):
+    cursor = mysql.connection.cursor()
+    cursor.execute('DELETE FROM cars WHERE id = %s', (car_id))
+    mysql.connection.commit()
+    cursor.close()
+    
+    flash('Coche eliminado')
+    return redirect(url_for('cars'))
     
 if __name__=='__main__':
     app.run(debug=True)

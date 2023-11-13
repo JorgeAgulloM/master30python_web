@@ -7,6 +7,16 @@
 
 
 {% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class='message alert-success'>
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     <h1>Car list | Jorge Agulló</h1>
 
     {% for car in cars %}
@@ -21,7 +31,7 @@
                 <p>{{car.4}}</p>
                 <p>
                     <a href="" class='btn btn-warning'>Editar</a>
-                    <a href="" class='btn btn-danger'>Eliminar</a>
+                    <a href="{{ url_for('delete', car_id=car.0 )}}" class='btn btn-danger'>Eliminar</a>
                 </p>
             </div>
 
