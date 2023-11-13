@@ -25,7 +25,7 @@ def about(request):
 
 def register_page(request):
     
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('index')
     
     register_form = RegisterForm
@@ -48,7 +48,7 @@ def register_page(request):
 
 def login_page(request):
     
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect('index')
     
     if request.method=='POST':

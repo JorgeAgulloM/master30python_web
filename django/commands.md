@@ -14,6 +14,13 @@ Generar BBDD Sqlite3
 - cd to new proyect path
 - python manage.py migrate
 
+    ### Para conectar a una BBDD con MySql
+    - Crear la BBDD
+    - Configurar la conexión a esta en settings de la app
+    - Instalar el módulo mysqlclient, si es necesario
+        - pip install mysqlclient
+    - python manage.py migrate
+
 Create Admin super user Django
 - python manage.py createsuperuser 
 
