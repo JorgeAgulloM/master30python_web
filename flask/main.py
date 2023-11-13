@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request
 from datetime import datetime
 from flask_mysqldb import MySQL
 
@@ -49,5 +49,30 @@ def contact(redirection = None):
 def languages():
     return render_template('languages.html')
 
+root = '/car'
+
+@app.route(f'{root}/create', methods=['GET', 'POST'])
+def create_car():
+    
+    if request.method == 'POST':
+        try:       
+
+            brand=request.form['brand']
+            model=request.form['model']
+            price=request.form['price']
+            city=request.form['city']
+
+            cursor = mysql.connection.cursor()
+        
+            cursor.execute("INSERT INTO cars VALUES(NULL, %s, %s, %s, %s)", (brand, model, price, city))
+        
+            cursor.connection.commit()
+            
+        except Exception as e:
+            print(f'Error: {e}')
+            return redirect(url_for('index'))
+        
+    return render_template('create_car.html')
+    
 if __name__=='__main__':
     app.run(debug=True)
