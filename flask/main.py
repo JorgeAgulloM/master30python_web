@@ -1,8 +1,10 @@
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, flash, redirect, url_for, render_template, request
 from datetime import datetime
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+
+app.secret_key = 'clave_secreta_flask_de_mierda_de_victor_robles'
 
 # Connection DB
 app.config['MYSQL_HOST'] = 'localhost'
@@ -63,11 +65,11 @@ def create_car():
             city=request.form['city']
 
             cursor = mysql.connection.cursor()
-        
             cursor.execute("INSERT INTO cars VALUES(NULL, %s, %s, %s, %s)", (brand, model, price, city))
-        
             cursor.connection.commit()
             
+            flash('Has creado un nuevo coche')
+            return redirect(url_for('index'))
         except Exception as e:
             print(f'Error: {e}')
             return redirect(url_for('index'))
